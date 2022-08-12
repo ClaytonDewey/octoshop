@@ -2,7 +2,7 @@ import React from "react";
 
 const ShoppingCart = ({ itemsInCart, onClick }) => {
   return (
-    <div id="cart__dropdown" className="cart__dropdown open">
+    <>
       {itemsInCart.map((item) => {
         return (
           <div key={item.prodId} className="cart__item">
@@ -24,7 +24,7 @@ const ShoppingCart = ({ itemsInCart, onClick }) => {
           </div>
         );
       })}
-    </div>
+    </>
   );
 };
 
