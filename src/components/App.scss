@@ -1,0 +1,226 @@
+// Breakpoints
+$bp-xsmall: 28.125em; // 450px;
+$bp-small: 48em; // 768px;
+$bp-medium: 64em; // 1024px;
+$bp-large: 85.375em; // 1366px;
+
+// Media Queries
+$mq-xsmall: "screen and (min-width: #{$bp-xsmall})";
+$mq-small: "screen and (min-width: #{$bp-small})";
+$mq-medium: "screen and (min-width: #{$bp-medium})";
+$mq-large: "screen and (min-width: #{$bp-large})";
+
+// Colors
+$clr-white: hsl(193, 38%, 86%);
+$clr-primary:hsl(150, 100%, 66%);
+
+$clr-light: hsl(217, 19%, 38%);
+$clr-dark-gray: hsl(217, 19%, 24%);
+$clr-dark: hsl(218, 23%, 16%);
+
+// Font family
+$ff-sans: "Manrope", sans-serif;
+
+// Font sizes
+$fs-300: 2.8rem;
+$fs-200: 2.3rem;
+$fs-100: 1.1rem;
+
+// Font weights
+$fw-800: 800;
+$fw-400: 400;
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html,
+body {
+    margin: 0px auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+html {
+  // This defines what 1rem is.
+  font-size: 62.5%; // 1rem = 10px;
+  font-style: normal;
+  font-weight: normal;
+}
+
+body {
+  font-family: "Kumbh Sans", sans-serif;
+  font-size: 1.4rem;
+  background: rgb(78,93,115);
+  background: linear-gradient(0deg, rgba(78,93,115,1) 0%, rgba(31,38,50,1) 45%, rgba(31,38,50,1) 100%);
+  color: $clr-white;
+  height: 100vh;
+}
+
+header,
+footer {
+  text-align: center;
+  margin: 3rem auto;
+}
+
+header {
+  padding-bottom: 2rem;
+  border-bottom: 1px solid $clr-white;
+}
+
+.nav {
+
+  &__primary {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 102.4rem;
+    margin: auto;
+
+    a {
+      color: $clr-white;
+      text-decoration: none;  
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column nowrap;
+  width: 100%;
+  max-width: 102.4rem;
+  margin-inline: auto;
+  padding-block: 2rem;
+
+  @media #{$mq-small} {
+    flex-flow: row wrap;
+  }
+}
+
+.card {
+  text-align: center;
+  padding: 2rem;
+  margin-bottom: 3rem;
+
+  &__link {
+    color: $clr-white;
+    text-decoration: none;
+    opacity: 1;
+    transition: opacity .25s ease-in-out;
+
+    &:hover {
+      opacity: .65;
+    }
+  }
+
+  &__img {
+    margin-bottom: 2rem;
+    border-radius: 5px;
+  }
+
+  &__title {
+    margin-bottom: 1rem;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 17.5rem;
+  }
+
+  &__price {
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  @media #{$mq-small} {
+    flex: 1 1 50%;
+  }
+
+  @media #{$mq-medium} {
+    flex: 0 0 25%;
+  }
+}
+
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 2rem;
+  margin: auto;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  transition: all .25s ease-in-out;
+
+  &__primary {
+    border-color: $clr-primary;
+    color: $clr-primary;
+
+    &:hover {
+      background: $clr-primary;
+      color: $clr-dark;
+    }
+  }
+
+  &__delete {
+    border-color: red;
+    border-width: 2px;
+    color: red;
+    border-radius: 50%;
+    font-weight: 700;
+    height: 2rem;
+    width: 2rem;
+    padding: 0;
+  }
+}
+
+.header {
+  position: relative;
+}
+
+.cart {
+
+  &__dropdown {
+    position: absolute;
+    background: lightgray;
+    right: 0;
+    top: 5rem;
+    width: 50rem;
+    padding: 2rem;
+    display: none;
+    visibility: hidden;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    border-radius: 0 0 5px 5px;
+
+    &.open {
+      display: flex;
+      visibility: visible;
+    }
+  }
+
+  &__item {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    color: $clr-dark;
+
+    img {
+      max-width: 10rem;
+      margin-bottom: 2rem;
+    }
+
+    button {
+      position: absolute;
+      right: -2rem;
+      top: -2rem;
+    }
+  }
+}
