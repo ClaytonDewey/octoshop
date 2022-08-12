@@ -186,6 +186,11 @@ header {
 
 .cart {
 
+  background-color: transparent;
+  border: none;
+  color: $clr-white;
+  cursor: pointer;
+
   &__dropdown {
     position: absolute;
     background: lightgray;
