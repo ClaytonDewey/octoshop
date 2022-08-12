@@ -1,7 +1,7 @@
 import React from "react";
 import ShoppingCart from "./ShoppingCart";
 
-const Header = () => {
+const Header = ({ itemsInCart, onClick }) => {
   return (
     <header className="header">
       <nav className="nav__primary">
@@ -17,7 +17,7 @@ const Header = () => {
             </span>
           </span>
         </a>
-        <ShoppingCart />
+        <ShoppingCart itemsInCart={itemsInCart} onClick={onClick} />
       </nav>
     </header>
   );
