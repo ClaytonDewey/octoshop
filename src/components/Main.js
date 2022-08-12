@@ -1,19 +1,43 @@
 import React, { useState, useEffect } from "react";
+// import localStorage from "localStorage";
 
 const Main = ({ Products }) => {
   const Items = Products.List;
   const [itemsInCart, setItemsInCart] = useState([]);
-  console.log(itemsInCart);
 
-  const addToCart = (prodId, image, currency, price, caption) => {
+  // useEffect(() => {
+  //   const loadItems = () => {
+  //     setItemsInCart(JSON.parse(localStorage.getItem("cart")));
+  //   };
+
+  //   loadItems();
+  // });
+
+  // const showCart = () => {
+  //   const cartItems = JSON.parse(localStorage.getItem("cart") || []);
+  //   cartItems.map((item) => {
+  //     return `
+  //     <div class="cart__item">
+  //       <button onclick="removeFromCart(${item.prodId})" class="btn btn-delete">-</button>
+  //       <img class="cart__img" src="${item.image}" alt="${item.caption} />
+  //       <span class="cart__price">${item.currency}${item.price}</span>
+  //     </div>
+  //   `;
+  //   });
+  // };
+
+  const addToCart = (prodId, mediumImageURL, currency, price, caption) => {
+    console.log(prodId, mediumImageURL, currency, price, caption);
     const itemToAdd = {
-      prodId,
-      image,
-      currency,
-      price,
-      caption,
+      prodId: prodId,
+      mediumImageURL: mediumImageURL,
+      currency: currency,
+      price: price,
+      caption: caption,
     };
     setItemsInCart([...itemsInCart, itemToAdd]);
+    console.log(itemsInCart);
+    localStorage.setItem("cart", JSON.stringify(itemsInCart));
   };
 
   return (
@@ -23,24 +47,30 @@ const Main = ({ Products }) => {
       </div>
       <main id="items" className="container">
         {Items.map((item) => {
+          const {
+            prodId,
+            productUrl,
+            mediumImageURL,
+            currency,
+            price,
+            caption,
+          } = item;
           return (
-            <div key={`${item.prodId}`} className="card">
-              <a href={`${item.productLink.href}`} className="card__link">
+            <div key={`${prodId}`} className="card">
+              <a href={`${productUrl}`} className="card__link">
                 <img
-                  src={`${item.mediumImageURL}`}
-                  alt={`${item.caption}`}
+                  src={`${mediumImageURL}`}
+                  alt={`${caption}`}
                   className="card__img"
                 />
-                <h2 className="card__title">{`${item.caption}`}</h2>
+                <h2 className="card__title">{`${caption}`}</h2>
               </a>
               <p className="card__price">
-                ${item.currency}${item.price}
+                ${currency}${price}
               </p>
               <button
                 onClick={() =>
-                  addToCart(
-                    `${item.prodId}, '${item.mediumImageURL}', '${item.currency}', ${item.price}, '${item.caption}'`
-                  )
+                  addToCart(prodId, mediumImageURL, currency, price, caption)
                 }
                 className="btn btn__primary"
               >
