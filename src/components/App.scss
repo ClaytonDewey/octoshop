@@ -170,19 +170,40 @@ header {
   }
 
   &__cancel {
-    border-color: red;
-    color: red;
+    background: #dc3545;
+    color: $clr-white;
+
+    &:hover {
+      background: #bb2d3b;
+      border-color: #b02a37;
+    }
+
+    &:active {
+      background: #b02a37;
+      border-color: #a52834;
+      box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);;
+    }
+
+    &:focus {
+      box-shadow: 0 0 0 0.25rem rgba(225,83,97, .5);
+    }
   }
 
   &__delete {
-    border-color: red;
+    border-color: #dc3545;
     border-width: 2px;
-    color: red;
+    color: #dc3545;
     border-radius: 50%;
     font-weight: 700;
     height: 2rem;
     width: 2rem;
     padding: 0;
+
+    &:hover {
+      border-color: #bb2d3b;
+      color: #b02a37;
+    }
+
   }
 }
 
@@ -269,6 +290,15 @@ header {
 
   &__content {
     padding: 2rem;
+    display: flex;
+    gap: 3rem;
+
+    &-img {
+
+      img {
+        border-radius: 5px;
+      }
+    }
   }
 
   &__actions {
