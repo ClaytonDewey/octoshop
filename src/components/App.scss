@@ -58,7 +58,6 @@ body {
   background: rgb(78,93,115);
   background: linear-gradient(0deg, rgba(78,93,115,1) 0%, rgba(31,38,50,1) 45%, rgba(31,38,50,1) 100%);
   color: $clr-white;
-  height: 100vh;
 }
 
 header,
@@ -371,7 +370,6 @@ header {
   }
 
   @media #{$mq-medium} {
-    flex-direction: row;
     align-items: flex-end;
 
     &__item {
