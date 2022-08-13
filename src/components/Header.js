@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ShoppingCart from "./ShoppingCart";
 
-const Header = ({ itemsInCart, onClick }) => {
+const Header = ({ itemsInCart, onClick, cartCount }) => {
   const [isOpen, setOpen] = useState("false");
 
   const handleToggle = () => {
@@ -19,7 +19,7 @@ const Header = ({ itemsInCart, onClick }) => {
           <em className="fas fa-shopping-cart" aria-hidden="true"></em>
           <span className="cart__count">
             <span id="ItemCount" className="Count">
-              0
+              {cartCount}
             </span>
           </span>
         </button>

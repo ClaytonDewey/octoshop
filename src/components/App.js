@@ -8,6 +8,7 @@ import "./App.scss";
 
 const App = () => {
   const [itemsInCart, setItemsInCart] = useState([]);
+  const cartCount = itemsInCart.length;
 
   useEffect(() => {
     const items = window.localStorage.getItem("cart");
@@ -39,7 +40,11 @@ const App = () => {
 
   return (
     <>
-      <Header itemsInCart={itemsInCart} onClick={removeFromCart} />
+      <Header
+        itemsInCart={itemsInCart}
+        onClick={removeFromCart}
+        cartCount={cartCount}
+      />
       <Main Products={Products} onClick={addToCart} />
       <Footer />
     </>
