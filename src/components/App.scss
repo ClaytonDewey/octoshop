@@ -70,6 +70,7 @@ footer {
 header {
   padding-bottom: 2rem;
   border-bottom: 1px solid $clr-white;
+  height: 5rem;
 }
 
 .nav {
@@ -168,6 +169,11 @@ header {
     }
   }
 
+  &__cancel {
+    border-color: red;
+    color: red;
+  }
+
   &__delete {
     border-color: red;
     border-width: 2px;
@@ -193,19 +199,20 @@ header {
 
   &__dropdown {
     position: absolute;
-    background: lightgray;
+    background: $clr-light;
+    color: $clr-white;
     right: 0;
     top: 5rem;
     width: 50rem;
     padding: 2rem;
     display: none;
     visibility: hidden;
-    justify-content: space-between;
     align-items: center;
     z-index: 100;
     border-radius: 0 0 5px 5px;
 
     &.open {
+      gap: 3rem;
       display: flex;
       flex-flow: row wrap;
       visibility: visible;
@@ -216,7 +223,6 @@ header {
     position: relative;
     display: flex;
     flex-direction: column;
-    color: $clr-dark;
 
     img {
       max-width: 10rem;
@@ -227,6 +233,54 @@ header {
       position: absolute;
       right: -2rem;
       top: -2rem;
+    }
+  }
+}
+
+.modal {
+
+  &__bg {
+    background: rgba(0,0,0,.7);
+    display: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    &.visible {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: fixed;  
+    }
+  }
+
+  &__body {
+    background: $clr-dark;
+    color: $clr-white;
+    width: 75%;
+    border-radius: 5px;
+  }
+
+  &__header {
+    padding: 2rem;
+    border-bottom: 1px solid $clr-light;
+  }
+
+  &__content {
+    padding: 2rem;
+  }
+
+  &__actions {
+    padding: 2rem;
+    border-top: 1px solid $clr-light;
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    width: auto;
+
+    > .btn {
+      margin: inherit;
     }
   }
 }
