@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import Modal from "./Modal";
 
-const Main = ({ Products, onClick }) => {
-  const Items = Products.List;
+const Main = ({ sortedItems, onClick, sortItems }) => {
   const [isOpen, setOpen] = useState("false");
   const [selectedItem, setSelectedItem] = useState({});
-
-  const sortItems = (e) => {
-    console.log(e.target.value);
-  };
 
   const renderContent = () => {
     return (
@@ -63,7 +58,7 @@ const Main = ({ Products, onClick }) => {
       {/* <div id="loading" className="loading">
         Loading...
       </div> */}
-      <div className="filter">
+      <div className="filter container">
         <div className="filter__item">
           <label htmlFor="sort-by">Sort By</label>
           <select
@@ -72,32 +67,21 @@ const Main = ({ Products, onClick }) => {
             aria-label="Sort By"
             onChange={sortItems}
           >
-            <option value="0" className="subject-option">
-              Description(A - Z)
-            </option>
-            <option value="1" className="subject-option">
-              Description(Z - A)
-            </option>
-            <option value="2" className="subject-option">
-              Brand(A - Z)
-            </option>
-            <option value="3" className="subject-option">
-              Brand(Z - A)
-            </option>
-            <option value="4" className="subject-option">
-              Price(Low - High)
-            </option>
-            <option value="5" className="subject-option">
-              Price(High - Low)
-            </option>
+            <option value="0">Description(A - Z)</option>
+            <option value="1">Description(Z - A)</option>
+            <option value="2">Brand(A - Z)</option>
+            <option value="3">Brand(Z - A)</option>
+            <option value="4">Price(Low - High)</option>
+            <option value="5">Price(High - Low)</option>
           </select>
         </div>
       </div>
 
       <main id="items" className="container">
-        {Items.map((item) => {
+        {sortedItems.map((item) => {
           const {
             prodId,
+            brand,
             productUrl,
             mediumImageURL,
             currency,
@@ -122,6 +106,7 @@ const Main = ({ Products, onClick }) => {
                 />
                 <h2 className="card__title">{`${caption}`}</h2>
               </a>
+              <p>{brand}</p>
               <p className="card__price">
                 {currency}
                 {price}
