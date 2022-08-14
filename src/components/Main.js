@@ -62,7 +62,9 @@ const Main = ({ Items, onClick }) => {
             <strong>Price:</strong> {selectedItem.currency}
             {selectedItem.price}
           </p>
-          <a href={selectedItem.productUrl}>Read More</a>
+          <a href={selectedItem.productUrl} className="btn btn__secondary">
+            Read More <i className="fas fa-chevron-right"></i>
+          </a>
         </div>
       </>
     );
