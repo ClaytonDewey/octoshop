@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
 const ShoppingCart = ({ itemsInCart, onClick }) => {
-  const [disabled, setDisabled] = useState(true);
   return (
     <>
       {itemsInCart.length ? (
@@ -12,7 +11,7 @@ const ShoppingCart = ({ itemsInCart, onClick }) => {
                 onClick={() => onClick(item.prodId)}
                 className="btn btn__delete"
               >
-                -
+                <i className="fas fa-times"></i>
               </button>
               <img
                 className="cart__img"
@@ -30,12 +29,7 @@ const ShoppingCart = ({ itemsInCart, onClick }) => {
         <h2>Your Cart is Empty</h2>
       )}
       <div className="cart__button">
-        <button
-          type="button"
-          href="/"
-          className="btn btn__primary"
-          {...(!itemsInCart.length && { disabled: true })}
-        >
+        <button type="button" href="/" className="btn btn__primary">
           Checkout
         </button>
       </div>
