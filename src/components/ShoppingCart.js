@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const ShoppingCart = ({ itemsInCart, onClick }) => {
+  const [disabled, setDisabled] = useState(true);
   return (
     <>
       {itemsInCart.length ? (
@@ -28,6 +29,16 @@ const ShoppingCart = ({ itemsInCart, onClick }) => {
       ) : (
         <h2>Your Cart is Empty</h2>
       )}
+      <div className="cart__button">
+        <button
+          type="button"
+          href="/"
+          className="btn btn__primary"
+          {...(!itemsInCart.length && { disabled: true })}
+        >
+          Checkout
+        </button>
+      </div>
     </>
   );
 };
