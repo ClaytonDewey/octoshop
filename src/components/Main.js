@@ -17,6 +17,8 @@ const Main = ({ Items, onClick }) => {
         brandZA: "brand",
         priceAZ: "price",
         priceZA: "price",
+        isAvailable: "isAvailable",
+        tos: "isAvailable",
       };
 
       const orders = {
@@ -26,6 +28,8 @@ const Main = ({ Items, onClick }) => {
         brandZA: "reverse",
         priceAZ: "forward",
         priceZA: "reverse",
+        isAvailable: "available",
+        tos: "oos",
       };
       const sortProperty = types[type];
       const sortOrder = orders[type];
@@ -34,10 +38,15 @@ const Main = ({ Items, onClick }) => {
         sorted = [...Items].sort((a, b) =>
           a[sortProperty] > b[sortProperty] ? 1 : -1
         );
-      } else {
+      } else if (sortOrder === "reverse") {
         sorted = [...Items].sort((a, b) =>
           b[sortProperty] > a[sortProperty] ? 1 : -1
         );
+      } else if (sortOrder === "available") {
+        sorted = [...Items].filter((item) => item[sortProperty] === true);
+        console.log(sorted);
+      } else if (sortOrder === "oos") {
+        sorted = [...Items].filter((item) => item[sortProperty] === false);
       }
       setData(sorted);
     };
@@ -119,6 +128,8 @@ const Main = ({ Items, onClick }) => {
             <option value="brandZA">Brand (Z - A)</option>
             <option value="priceAZ">Price (Low - High)</option>
             <option value="priceZA">Price (High - Low)</option>
+            <option value="isAvailable">Available</option>
+            <option value="tos">Temporarily Out of Stock</option>
           </select>
         </div>
       </div>
@@ -158,12 +169,14 @@ const Main = ({ Items, onClick }) => {
                 {price}
               </p>
               <button
-                onClick={() =>
-                  onClick(prodId, mediumImageURL, currency, price, caption)
-                }
-                className="btn btn__primary"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setSelectedItem(item);
+                  handleToggle(prodId);
+                }}
+                className="btn btn__secondary"
               >
-                Add to Cart
+                View More
               </button>
             </div>
           );
