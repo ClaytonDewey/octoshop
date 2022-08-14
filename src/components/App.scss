@@ -158,6 +158,7 @@ header {
   background: transparent;
   cursor: pointer;
   transition: all .25s ease-in-out;
+  text-decoration: none;
 
   &__primary {
     border-color: $clr-primary;
@@ -187,6 +188,7 @@ header {
     &:focus {
       box-shadow: 0 0 0 0.25rem rgba(225,83,97, .5);
     }
+
   }
 
   &__delete {
@@ -204,6 +206,22 @@ header {
       color: #b02a37;
     }
 
+  }
+
+  &__secondary {
+    background: $clr-primary;
+    color: $clr-dark;
+    transform: translateY(0);
+
+    & > svg {
+      font-size: 1rem;
+      margin-left: 8px;
+    }
+
+    &:hover {
+      background: darken($clr-primary, 15%);
+      transform: translateY(-3px)
+    }
   }
 }
 
@@ -260,6 +278,7 @@ header {
     position: relative;
     display: flex;
     flex-direction: column;
+    padding: 1rem;
 
     img {
       max-width: 10rem;
@@ -268,8 +287,8 @@ header {
 
     button {
       position: absolute;
-      right: -2rem;
-      top: -2rem;
+      right: -1rem;
+      top: -1rem;
     }
   }
 }
@@ -320,11 +339,11 @@ header {
     }
 
     p {
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
     }
 
-    a {
-      color: $clr-white;
+    .btn {
+      display: inline-flex;
     }
   }
 
