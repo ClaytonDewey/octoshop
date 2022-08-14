@@ -240,6 +240,12 @@ header {
       flex-flow: row wrap;
       visibility: visible;
     }
+
+    h2,
+    .cart__button {
+      flex: 1 1 100%;
+    }
+
   }
 
   &__name {
