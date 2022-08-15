@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/octoshop/static/css/main.3c2f370d.css",
-    "main.js": "/octoshop/static/js/main.5cba6dc1.js",
+    "main.css": "/octoshop/static/css/main.1f7063c6.css",
+    "main.js": "/octoshop/static/js/main.dd511254.js",
     "index.html": "/octoshop/index.html",
-    "main.3c2f370d.css.map": "/octoshop/static/css/main.3c2f370d.css.map",
-    "main.5cba6dc1.js.map": "/octoshop/static/js/main.5cba6dc1.js.map"
+    "main.1f7063c6.css.map": "/octoshop/static/css/main.1f7063c6.css.map",
+    "main.dd511254.js.map": "/octoshop/static/js/main.dd511254.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c2f370d.css",
-    "static/js/main.5cba6dc1.js"
+    "static/css/main.1f7063c6.css",
+    "static/js/main.dd511254.js"
   ]
 }
