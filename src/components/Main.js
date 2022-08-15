@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./Modal";
 
-const Main = ({ Items, onClick }) => {
-  const [isOpen, setOpen] = useState("false");
+const Main = ({ Items, onClick, isModalVisible, toggleModal }) => {
   const [selectedItem, setSelectedItem] = useState({});
   const [data, setData] = useState([]);
   const [sortType, setSortType] = useState("descAZ");
@@ -53,6 +52,7 @@ const Main = ({ Items, onClick }) => {
 
     sortArray(sortType);
   }, [sortType, Items]);
+
   const renderContent = () => {
     return (
       <>
@@ -84,7 +84,7 @@ const Main = ({ Items, onClick }) => {
       <>
         <button
           onClick={() => {
-            setOpen("false");
+            toggleModal();
             onClick(
               selectedItem.prodId,
               selectedItem.mediumImageURL,
@@ -97,15 +97,11 @@ const Main = ({ Items, onClick }) => {
         >
           Add to Cart
         </button>
-        <button onClick={handleToggle} className="btn btn__cancel">
+        <button onClick={toggleModal} className="btn btn__cancel">
           Close
         </button>
       </>
     );
-  };
-
-  const handleToggle = () => {
-    setOpen(!isOpen);
   };
 
   return (
@@ -152,7 +148,7 @@ const Main = ({ Items, onClick }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   setSelectedItem(item);
-                  handleToggle(prodId);
+                  toggleModal(prodId);
                 }}
                 className="card__link"
               >
@@ -171,8 +167,8 @@ const Main = ({ Items, onClick }) => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
+                  toggleModal(prodId);
                   setSelectedItem(item);
-                  handleToggle(prodId);
                 }}
                 className="btn btn__secondary"
               >
@@ -182,13 +178,14 @@ const Main = ({ Items, onClick }) => {
           );
         })}
       </main>
-      <Modal
-        title={selectedItem.caption}
-        content={renderContent()}
-        actions={renderActions()}
-        isOpen={isOpen}
-        onDismiss={() => handleToggle()}
-      />
+      {isModalVisible && (
+        <Modal
+          title={selectedItem.caption}
+          content={renderContent()}
+          actions={renderActions()}
+          onDismiss={() => toggleModal()}
+        />
+      )}
     </>
   );
 };

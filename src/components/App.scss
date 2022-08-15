@@ -57,6 +57,7 @@ body {
   font-size: 1.4rem;
   background: rgb(78,93,115);
   background: linear-gradient(0deg, rgba(78,93,115,1) 0%, rgba(31,38,50,1) 45%, rgba(31,38,50,1) 100%);
+  background-attachment: fixed;
   background-position: top center;
   background-size: cover;
   color: $clr-white;

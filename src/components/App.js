@@ -8,6 +8,7 @@ import "./App.scss";
 
 const App = () => {
   const [itemsInCart, setItemsInCart] = useState([]);
+  const [isModalVisible, setIsModalVisible] = React.useState(false);
   const cartCount = itemsInCart.length;
   const Items = Products.List;
 
@@ -21,6 +22,8 @@ const App = () => {
       window.localStorage.setItem("cart", JSON.stringify(itemsInCart));
     }
   }, [itemsInCart]);
+
+  const toggleModal = () => setIsModalVisible(!isModalVisible);
 
   const addToCart = (prodId, mediumImageURL, currency, price, caption) => {
     const itemToAdd = {
@@ -47,7 +50,12 @@ const App = () => {
         onClick={removeFromCart}
         cartCount={cartCount}
       />
-      <Main Items={Items} onClick={addToCart} />
+      <Main
+        Items={Items}
+        isModalVisible={isModalVisible}
+        toggleModal={toggleModal}
+        onClick={addToCart}
+      />
       <Footer />
     </>
   );
